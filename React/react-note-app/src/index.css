@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Righteous&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: 'Inter', sans-serif;
+  background-color: #111014;
+  color: white;
+}
+.highlight{
+  font-family: 'Righteous';
+}
+.mybtn{
+  transition: 0.3s;
+}
+.mybtn:hover{
+  background-color: rgb(147, 99, 192);
+}
+.mytext{
+  transition: 0.3s;
+}
+.mytext:hover{
+  color: rgb(147, 99, 192);
+}
+.mybtncancel{
+  transition: 0.3s;
+}
+.mybtncancel:hover{
+  background-color: rgb(185, 40, 40);
+}
+.rotate{
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
