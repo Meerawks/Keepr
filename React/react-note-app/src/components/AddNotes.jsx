@@ -29,7 +29,7 @@ export default function AddNotes() {
       setException("Select a Category")
     if(title && body && category)
       console.log(newNote)
-      axios.post("http://127.0.0.1:8000/notes/" , newNote)
+      axios.post("https://oyster-app-mrdrl.ondigitalocean.app/notes/" , newNote)
       .then(res=> {
         console.log (res.data)
         toast.success('A new note has been added')

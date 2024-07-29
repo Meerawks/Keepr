@@ -23,7 +23,7 @@ export default function NoteDetailView({notes}) {
 
   useEffect(()=>{
     
-    axios.get(`http://127.0.0.1:8000/notes/${id}`)
+    axios.get(`https://oyster-app-mrdrl.ondigitalocean.app/notes/${id}`)
     .then(res=>{
         console.log(res.data)
         setNote(res.data)
@@ -36,7 +36,7 @@ export default function NoteDetailView({notes}) {
 
   function deleteNote(){
     const id = searchParams.get('id')
-    axios.delete(`http://127.0.0.1:8000/notes/${id}`)
+    axios.delete(`https://oyster-app-mrdrl.ondigitalocean.app/notes/${id}`)
     .then(res=>{
       console.log("Deleted Successfully")
       toast.warning("Note has been deleted")
@@ -53,7 +53,9 @@ export default function NoteDetailView({notes}) {
   return (
     <>
     <ToastContainer theme="dark" />
-    <div className='mt-10 flex flex-col w-3/4 ml-auto mr-auto md:w-2/4 lg:w-2/4 mx-10 p-5 bg-zinc-900 rounded-md gap-10 shadow-md'>
+      {
+        note.length!==0 ? (
+          <div className='mt-10 flex flex-col w-3/4 ml-auto mr-auto md:w-2/4 lg:w-2/4 mx-10 p-5 bg-zinc-900 rounded-md gap-10 shadow-md'>
         <div className=' bg-zinc-900 flex flex-col'>
             <div className='flex flex-col gap-5 lg:flex-row bg-zinc-900 items-center justify-between'>
             <p className='bg-zinc-900 text-2xl sm:text-3xl md:text-4xl font-bold'>{note.title}</p>
@@ -78,6 +80,14 @@ export default function NoteDetailView({notes}) {
             <p className='bg-zinc-900'> {note.category &&  note.category.slice(0,1) + note.category.slice(1).toLowerCase()}</p>
         </div>
     </div>
+        ) :
+        <div className='mt-10 flex flex-col w-3/4 ml-auto mr-auto md:w-2/4 lg:w-2/4 mx-10 p-5 bg-zinc-900 rounded-md gap-10 shadow-md'>
+        <div className=' bg-zinc-900 flex flex-col'>
+        <h1 className="flex flex-col justify-center items-center gap-5"> <img className="w-10 rotate" src="../spinner.svg"/></h1>
+        </div>
+    </div>
+        
+      }
     </>
   )
 }

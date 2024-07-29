@@ -23,9 +23,9 @@ export default function EditNote() {
   const id = searchParams.get('id')
   function editNote(){
    
-    console.log(`http://127.0.0.1:8000/notes/${id}/`)
+    console.log(`https://oyster-app-mrdrl.ondigitalocean.app/notes/${id}/`)
     console.log(newNote)
-    axios.put(`http://127.0.0.1:8000/notes/${id}/`, newNote)
+    axios.put(`https://oyster-app-mrdrl.ondigitalocean.app/notes/${id}/`, newNote)
     .then(res=> {
       console.log (res.data)
       toast.success('Note has been updated')
@@ -39,7 +39,7 @@ export default function EditNote() {
 
   useEffect(()=>{
     const id = searchParams.get('id')
-    axios.get(`http://127.0.0.1:8000/notes/${id}/`)
+    axios.get(`https://oyster-app-mrdrl.ondigitalocean.app/notes/${id}/`)
     .then(res=>{
         console.log(res.data)
         setTitle(res.data.title)
@@ -56,7 +56,9 @@ export default function EditNote() {
   return (
     <>
     <ToastContainer theme="dark" />
-    <div className='flex flex-col w-4/5 mx-10 lg:w-3/5 xl:w-1/3 ml-auto mr-auto m-10 p-5 gap-10 bg-zinc-900 rounded-md shadow-md'>
+    {
+      title.length!==0 ? (
+        <div className='flex flex-col w-4/5 mx-10 lg:w-3/5 xl:w-1/3 ml-auto mr-auto m-10 p-5 gap-10 bg-zinc-900 rounded-md shadow-md'>
     <h1 className='bg-zinc-900 text-2xl font-bold text-center'>Update Note</h1>
     <div className='flex flex-col bg-zinc-900 gap-2'>
         <label className='bg-zinc-900 text-lg' htmlFor='title'  >Title</label>
@@ -79,6 +81,15 @@ export default function EditNote() {
         Update
     </button>
 </div>
+      ) : (
+        <div className='mt-10 flex flex-col w-3/4 ml-auto mr-auto md:w-2/4 lg:w-2/4 mx-10 p-5 bg-zinc-900 rounded-md gap-10 shadow-md'>
+        <div className=' bg-zinc-900 flex flex-col'>
+        <h1 className="flex flex-col justify-center items-center gap-5"> <img className="w-10 rotate" src="../spinner.svg"/></h1>
+        </div>
+    </div>
+      )
+    }
+    
 </>
   )
 }

@@ -18,7 +18,7 @@ function App() {
   const handleSearchText =(val)=>{
     setSearchText(val)
     console.log(searchText)
-    axios.get(`http://127.0.0.1:8000/notes-search/?search=${searchText}`)
+    axios.get(`https://oyster-app-mrdrl.ondigitalocean.app/notes-search/?search=${searchText}`)
     .then(res=>{
       console.log(res.data)
       setSearchNotes(res.data)
@@ -30,7 +30,7 @@ function App() {
 
   useEffect(()=>{
     handleSearchText("")
-    axios.get("http://127.0.0.1:8000/notes/")
+    axios.get("https://oyster-app-mrdrl.ondigitalocean.app/notes/")
     .then(res=>{
         console.log(res.data)
         setNotes(res.data)
@@ -52,7 +52,7 @@ function App() {
      <Router>
      <Navbar searchText={searchText} handleSearchText={handleSearchText} />
      <Routes>
-       <Route exact path="" element={<MainPage searchNotes={searchNotes}  searchText={searchText}/>}/>
+       <Route exact path="" element={<MainPage searchNotes={searchNotes}  searchText={searchText} handleSearchText={handleSearchText} />}/>
        <Route exact path="/add-note" element={<AddNotes />}/>
        <Route exact path="/notes/:slug" element={<NoteDetailView notes={notes} />}/>
        <Route exact path="/edit-note/:id" element={<EditNote />}/>

@@ -23,7 +23,7 @@ export default function MainPage({searchNotes, searchText}) {
   };
 
   useEffect(()=>{
-    axios.get("http://127.0.0.1:8000/notes/")
+    axios.get("https://oyster-app-mrdrl.ondigitalocean.app/notes/")
     .then(res=>{
         console.log(res.data)
         setNotes(res.data)
@@ -36,7 +36,8 @@ export default function MainPage({searchNotes, searchText}) {
   return (
     <>
     <Filter  filteredText={filteredText} handleFilteredText={handleFilteredText} />
-    {!searchText.length==0 ? (<NotesCardContainer notes={searchNotes}/>): (<NotesCardContainer notes={filteredNotes}/>)}
+   
+    {!searchText.length==0 ? (<NotesCardContainer notes={searchNotes}/>): notes.length!==0 ? (<NotesCardContainer notes={filteredNotes}/>): <h1 className="flex flex-col justify-center items-center gap-5 mt-10"> <img className="w-10 rotate" src="../spinner.svg"/></h1>}
 
     </>
   )
