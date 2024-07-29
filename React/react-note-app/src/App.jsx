@@ -53,7 +53,7 @@ function App() {
      <Navbar searchText={searchText} handleSearchText={handleSearchText} />
      <Routes>
        <Route exact path="" element={<MainPage searchNotes={searchNotes}  searchText={searchText} handleSearchText={handleSearchText} />}/>
-       <Route exact path="https://66a7c7a1488af83ec7d98fbf--mellifluous-daffodil-9a7a9d.netlify.app/add-note" element={<AddNotes />}/>
+       <Route exact path="/add-note" element={<AddNotes />}/>
        <Route exact path="/notes/:slug" element={<NoteDetailView notes={notes} />}/>
        <Route exact path="/edit-note/:id" element={<EditNote />}/>
      </Routes>
