@@ -78,6 +78,7 @@ CORS_ALLOWED_ORIGINS = [
 "http://localhost:5173",
 "http://localhost:5174",
 "https://66a7c7a1488af83ec7d98fbf--mellifluous-daffodil-9a7a9d.netlify.app",
+"https://66a7cac13b17890008935fab--mellifluous-daffodil-9a7a9d.netlify.app",
  
 ]
 
